@@ -310,7 +310,26 @@ public class ForecastFragment extends Fragment {
                     }
                 }
             }
+            try {
+                return getWeatherDataFromJson(forecastJsonStr,numDays);
+            }catch (JSONException e)
+            {
+                Log.e(LOG_TAG,e.getMessage(),e);
+                e.printStackTrace();
+            }
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(String[] result) {
+            if(result!=null)
+            {
+                mForecastAdapter.clear();
+                for(String dayForecastStr:result)
+                {
+                    mForecastAdapter.add(dayForecastStr);
+                }
+            }
         }
     }
 }
