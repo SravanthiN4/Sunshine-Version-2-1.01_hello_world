@@ -141,6 +141,8 @@ public class ForecastFragment extends Fragment {
          */
         private String formatHighLows(double high, double low, String unitType) {
             // For presentation, assume the user doesn't care about tenths of a degree.
+            //A temperature difference of 1 deg C is the equivalent of a temperature difference 1.8°F.
+            //where the freezing point of water is 32 degrees Fahrenheit (°F) and the boiling point 212°F (at standard atmospheric pressure).
 
             if(unitType.equals(getString(R.string.pref_units_imperial)))
             {
